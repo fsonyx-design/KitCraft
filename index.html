@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitCraft | Sports Store</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0d0c;color:white;font-family:Arial,sans-serif}
+header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292d29}
+.logo{font-size:27px;font-weight:900;color:#b7ff45}
+header a{color:white;text-decoration:none}
+.hero{padding:65px 7%;background:linear-gradient(110deg,#172018,#090b09)}
+.hero small{color:#b7ff45;letter-spacing:3px}
+h1{font-size:clamp(40px,8vw,75px);margin:18px 0}
+.hero p{color:#c4c8c3;line-height:1.7}
+.btn,button{background:#b7ff45;color:#10130d;border:0;padding:13px 19px;font-weight:bold;border-radius:5px;cursor:pointer;text-decoration:none;display:inline-block}
+section{padding:35px 6%}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:16px}
+.card{background:#171a17;padding:13px;border:1px solid #303530;border-radius:10px}
+.product-img{height:125px;display:grid;place-items:center;background:#252b24;border-radius:7px;font-size:65px}
+.card h3{font-size:16px}
+.price{color:#b7ff45;font-weight:bold}
+.card button{width:100%;margin-top:8px}
+#cart{color:#b7ff45}
+footer{text-align:center;padding:30px;color:#9da49a;border-top:1px solid #303530}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">KITCRAFT.</div>
+<a href="#products">Shop ⚽ &nbsp; <span id="cart">Cart: 0</span></a>
+</header>
+<div class="hero">
+<small>YOUR GAME. YOUR GEAR.</small>
+<h1>PLAY LIKE<br>YOU MEAN IT.</h1>
+<p>Football kits and sports essentials.<br>Pakistan-wide delivery available.</p>
+<a class="btn" href="#products">EXPLORE COLLECTION</a>
+</div>
+<section id="products">
+<h2>Featured Collection</h2>
+<div class="products" id="list"></div>
+</section>
+<section>
+<h2>Ready to order?</h2>
+<p>Message us on WhatsApp to confirm availability and delivery.</p>
+<a class="btn" href="https://wa.me/923412744824?text=Hi%20KitCraft%2C%20I%20want%20to%20place%20an%20order" target="_blank">ORDER ON WHATSAPP</a>
+</section>
+<footer>© 2026 KitCraft · Built for the love of sport.</footer>
+<script>
+const items=[
+{name:"Football Jersey",price:1800,icon:"👕"},
+{name:"Football Kit",price:2500,icon:"⚽"},
+{name:"Football Boots",price:3500,icon:"👟"},
+{name:"Shin Guards",price:800,icon:"🛡️"},
+{name:"Sports Socks",price:450,icon:"🧦"},
+{name:"Training Wear",price:2000,icon:"🏃"}
+];
+let count=0;
+document.getElementById('list').innerHTML=items.map((p,i)=>`
+<div class="card">
+<div class="product-img">${p.icon}</div>
+<h3>${p.name}</h3>
+<div class="price">Rs. ${p.price.toLocaleString('en-PK')}</div>
+<button onclick="add(${i})">Add to Cart</button>
+</div>`).join('');
+function add(i){
+count++;
+document.getElementById('cart').textContent='Cart: '+count;
+alert(items[i].name+' added! Message us on WhatsApp to confirm your order.');
+}
+</script>
+</body>
+</html>
